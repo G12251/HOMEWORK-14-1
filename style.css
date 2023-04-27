@@ -75,7 +75,8 @@
   
   img {
     margin: 0 30px;
-    animation: scale 1s ease-in-out forwards;
+    opacity: 0;
+    animation: scale 1s ease-in-out forwards, drop-image 1s ease-in-out forwards, scale-back 1s ease-in-out forwards 1s;
   }
   
   @keyframes scale {
@@ -83,8 +84,29 @@
       opacity: 0;
       transform: scale(0);
     }
+    50% {
+      transform: scale(1);
+    }
     100% {
       opacity: 1;
+      transform: scale(2);
+    }
+  }
+  
+  @keyframes drop-image {
+    0% {
+      transform: translateY(-200%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+  
+  @keyframes scale-back {
+    0% {
+      transform: scale(0);
+    }
+    100% {
       transform: scale(1);
     }
   }
